@@ -6,12 +6,14 @@ var randomUpper = ["ABCDEFGHIJKLMNOPQRSTUVXYZ"];
 // This generates your random lowercase letter
 var randomLower = ["abcdefghijklmnopqrstuvwyz"];
 // This generates your random number
-var randomNumber = [1234567890];
+var randomNumber = ["1234567890"];
 // This generates your random special character
 var randomCharacter = ["!@#$%^&*()_-+=[{]};:',<.>/?"];
 // This array will hold the values that the user would want in password
 var possibleArray = [];
-  
+// This is the finished, randomized array
+var finishedPassword = "";
+
 // Write password to the #password input
 function writePassword() {
   alert("Welcome to the Password Generator Website!");
@@ -61,14 +63,19 @@ function writePassword() {
     } else {
       alert("You will not have Special Characters in your password!");
   }
-  
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var joinedArray = possibleArray.join('');
 
-  passwordText.value = password;
+
+  for (var i = 0; i < charLength; i++) {
+  var readyLetters = possibleArray[Math.floor(Math.random() * possibleArray.length)];
+  finishedArray.push(readyLetters);
+  }
 };
-  
+
+
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", event => {
@@ -76,5 +83,8 @@ generateBtn.addEventListener("click", event => {
 });
 
 
+// var password = generatePassword()
 
+// var passwordText = document.querySelector("#password");
 
+//  passwordText.value = password;
