@@ -11,7 +11,7 @@ var randomNumber = ["1234567890"];
 var randomCharacter = ["!@#$%^&*()_-+=[{]};:',<.>/?"];
 // This array will hold the values that the user would want in password
 var possibleArray = [];
-// This is the finished, randomized array
+// This is the finished, randomized string
 var finishedPassword = "";
 
 // Write password to the #password input
@@ -64,27 +64,25 @@ function writePassword() {
       alert("You will not have Special Characters in your password!");
   }
 
+
+  // Taking all of the desired criteria that the user wants and combining them into one long string
   var joinedArray = possibleArray.join('');
 
-
-  for (var i = 0; i < charLength; i++) {
-  var readyLetters = possibleArray[Math.floor(Math.random() * possibleArray.length)];
-  finishedArray.push(readyLetters);
+  // The loop that generate a random password at the length the user desires
+  for (var i = 0, n = joinedArray.length; i < charLength; i++) {
+    finishedPassword += joinedArray.charAt(Math.floor(Math.random() * n));
   }
+
+  // Access the text box in the HTML in order to push text
+  var passwordText = document.querySelector("#password");
+
+  // Taking the generated password and inputting into the text box
+  passwordText.value = finishedPassword;
+
 };
-
-
-
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", event => {
   writePassword();
 });
 
-
-// var password = generatePassword()
-
-// var passwordText = document.querySelector("#password");
-
-//  passwordText.value = password;
